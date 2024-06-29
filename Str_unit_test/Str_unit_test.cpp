@@ -61,5 +61,73 @@ namespace Strunittest
 			Assert::AreEqual(expected_result, actual_result);
 		}
 
+		TEST_METHOD(TestMyStrcmp)
+		{
+			// Test case 1: str1 is greater than str2
+			char str1[] = "Hello";
+			char str2[] = "hello";
+			int expected_result = -1; // 'H' < 'W'
+			int actual_result = mystrcmp(str1, str2);
+			Assert::AreEqual(expected_result, actual_result);
+
+			// Test case 2: str1 is less than str2
+			char str3[] = "hello";
+			char str4[] = "Hello";
+			expected_result = 1; // 'W' > 'H'
+			actual_result = mystrcmp(str3, str4);
+			Assert::AreEqual(expected_result, actual_result);
+
+			// Test case 3: str1 is equal to str2
+			char str5[] = "Hello";
+			char str6[] = "Hello";
+			expected_result = 0; // 'Hello' == 'Hello'
+			actual_result = mystrcmp(str5, str6);
+			Assert::AreEqual(expected_result, actual_result);
+		}
+
+		TEST_METHOD(TestStringToNumber)
+		{
+			char str1[] = "-12345";
+			int expected_result = -12345;
+			int actual_result = StringToNumber(str1);
+			Assert::AreEqual(expected_result, actual_result);
+		}
+
+		TEST_METHOD(TestNumberToString)
+		{
+			int number1 = -12345;
+			char expected_result1[] = "-12345";
+			char* actual_result1 = NumberToString(number1);
+			Assert::AreEqual(0, strcmp(expected_result1, actual_result1));
+			delete[] actual_result1;
+		}
+
+		TEST_METHOD(TestMyStrrev)
+		{
+			char str1[] = "Hello,";
+			char expected_result1[] = ",olleH";
+			char* actual_result1 = mystrrev(str1);
+			Assert::AreEqual(0, strcmp(expected_result1, actual_result1));
+			delete[] actual_result1;
+		}
+
+		TEST_METHOD(TestUppercase)
+		{
+			char str1[] = "Hello,";
+			char expected_result1[] = "HELLO,";
+			char* actual_result1 = Uppercase(str1);
+			Assert::AreEqual(0, strcmp(expected_result1, actual_result1));
+			delete[] actual_result1;
+		}
+
+		TEST_METHOD(TestLowercase)
+		{
+			char str1[] = "HeLLo,";	
+			char expected_result1[] = "hello,";
+			char* actual_result1 = Lowercase(str1);
+			Assert::AreEqual(0, strcmp(expected_result1, actual_result1));
+			delete[] actual_result1;
+		}
+
 	};
 }
